@@ -1,17 +1,22 @@
 # config.py
 
-BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load .env file
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
 CLAIM_INTERVAL_HOURS = 6
-CLAIM_REWARD = 2500
+CLAIM_REWARD = 250
 REFERRAL_REWARD = 50
 
 POOL_PER_EVOL = {
-    1: 25000000,
-    2: 50000000,
-    3: 75000000,
+    1: 2500000,
+    2: 5000000,
+    3: 7500000,
     4: 100000000,
     5: 125000000,
-    6: 150000000,
-    7: 200000000,
+    6: 1500000000,
+    7: 2000000000,
 }
-
