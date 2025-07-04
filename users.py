@@ -39,7 +39,7 @@ async def claim_reward(update, context):
     user["last_claim"] = now
     users[user_id] = user
     save_users(users)
-    await update.message.reply_text(f"✅ Klaim berhasil! +{CLAIM_REWARD} poin.\nEvolusimu: {name}")ame}")
+    await update.message.reply_text(f"✅ Klaim berhasil! +{CLAIM_REWARD} poin.\nEvolusimu: {name}")
 
 async def get_user_status(update, context):
     user_id = str(update.effective_user.id)
@@ -77,5 +77,5 @@ async def export_csv(update, context):
         writer.writerow(["User ID", "Points", "Wallet"])
         for uid, u in users.items():
             writer.writerow([uid, u["points"], u.get("wallet", "")])
-    await update.message.reply_document(document=open("data/export.csv", "rb")), "rb"))
+    await update.message.reply_document(document=open("data/export.csv", "rb"))
                   
