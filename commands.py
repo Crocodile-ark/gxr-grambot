@@ -22,7 +22,7 @@ def register_handlers(application):
 # Kirim splash/loading screen
 async def send_splash_screen(update, context):
     await update.message.reply_photo(
-        photo=open("assets/splash.jpg", "rb"),
+        photo=open("assets/startup_bg.jpg", "rb"),
         caption="Loading... Selamat datang di GXR Airdrop Bot!"
     )
     await asyncio.sleep(2)  # Delay loading 2 detik
