@@ -31,7 +31,7 @@ async def send_splash_screen(update, context):
 async def send_background_message(target, context, caption=None):
     # target: update.message ATAU query.message
     await target.reply_photo(
-        photo=open("assets/background.jpg", "rb"),
+        photo=open("assets/main_bg_light.jpg", "rb"),
         caption=caption
     )
 
