@@ -14,5 +14,5 @@ def get_evol_info(points):
     elif points < 120000:
         return "Evol 6 – Genesis", "assets/evol_6.png", 30
     else:
-        return "Evol 7 – Final Form", "assets/evol_7.png", 50vol_7.png", 50
+        return "Evol 7 – Final Form", "assets/evol_7.png", 50
       
