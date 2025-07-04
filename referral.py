@@ -29,4 +29,4 @@ async def apply_referral(update, context):
     users[new_user_id]["points"] += REFERRAL_REWARD
     users[new_user_id]["ref_applied"] = True
     save_users(users)
-    await update.message.reply_text("✅ Referral berhasil! Kamu dan temanmu dapat poin.")")
+    await update.message.reply_text("✅ Referral berhasil! Kamu dan temanmu dapat poin.")
