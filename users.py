@@ -46,8 +46,13 @@ async def get_user_status(update, context):
     users = load_users()
     user = users.get(user_id, {"points": 0})
     name, badge, _ = get_evol_info(user["points"])
-    await context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(badge, "rb"),
-        caption=f"Evolusimu: {name}\nPoin: {user['points']}")
+
+    # Check if image exists
+    if os.path.exists(badge):
+        await context.bot.send_photo(chat_id=update.effective_chat.id, photo=open(badge, "rb"),
+            caption=f"🎮 Evolusimu: {name}\n💎 Poin: {user['points']}")
+    else:
+        await update.message.reply_text(f"🎮 **Evolusimu:** {name}\n💎 **Poin:** {user['points']}\n📷 _Gambar evolusi akan segera ditambahkan_", parse_mode='Markdown')
 
 async def connect_wallet(update, context):
     if not context.args:
@@ -78,4 +83,3 @@ async def export_csv(update, context):
         for uid, u in users.items():
             writer.writerow([uid, u["points"], u.get("wallet", "")])
     await update.message.reply_document(document=open("data/export.csv", "rb"))
-                  
