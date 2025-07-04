@@ -1,11 +1,6 @@
 # config.py
 
-import os
-from dotenv import load_dotenv
-
-load_dotenv()  # Load .env file
-
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+BOT_TOKEN = "7812173135:AAGZXdmfc321nR3KbStydVKbmoNHclXF2RM"
 
 CLAIM_INTERVAL_HOURS = 6
 CLAIM_REWARD = 250
