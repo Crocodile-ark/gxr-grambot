@@ -13,6 +13,6 @@ def register_handlers(application):
     application.add_handler(CommandHandler("exportcsv", export_csv))
     application.add_handler(CommandHandler("usecode", apply_referral))
 
-def start(update, context):
-    update.message.reply_text("🚀 Selamat datang di GXR Airdrop Bot!\nGunakan /claim untuk mulai!")
+async def start(update, context):
+    await update.message.reply_text("🚀 Selamat datang di GXR Airdrop Bot!\nGunakan /claim untuk mulai!")
   
