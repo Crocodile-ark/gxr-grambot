@@ -15,13 +15,13 @@ GXR Grambot adalah bot airdrop Telegram yang menggunakan arsitektur hybrid denga
 ## 🎮 Fitur Utama
 
 ### ⚡ Sistem Evolusi 7 Level
-- **Evol 1 (Rookie)**: 0-49 points, 5 GXR max claim, 2.5M pool
+- **Evol 1 (Rookie)**: 0-49 points, 5 GXR max claim, 1M pool
 - **Evol 2 (Charger)**: 50-14,999 points, 10 GXR max, 5M pool  
-- **Evol 3 (Breaker)**: 15,000-29,999 points, 15 GXR max, 7.5M pool
-- **Evol 4 (Phantom)**: 30,000-49,999 points, 20 GXR max, 100M pool
-- **Evol 5 (Overdrive)**: 50,000-79,999 points, 25 GXR max, 125M pool
-- **Evol 6 (Genesis)**: 80,000-119,999 points, 30 GXR max, 1.5B pool
-- **Evol 7 (Final Form)**: 120,000+ points, 50 GXR max, 2B pool
+- **Evol 3 (Breaker)**: 15,000-29,999 points, 15 GXR max, 1,5M pool
+- **Evol 4 (Phantom)**: 30,000-49,999 points, 20 GXR max, 3M pool
+- **Evol 5 (Overdrive)**: 50,000-79,999 points, 25 GXR max, 5M pool
+- **Evol 6 (Genesis)**: 80,000-119,999 points, 30 GXR max, 7,5M pool
+- **Evol 7 (Final Form)**: 120,000+ points, 50 GXR max, 15M pool
 
 ### 🚜 Farming System
 - Claim reward setiap 6 jam (250 points per claim)
