@@ -15,7 +15,7 @@ GXR Grambot adalah bot airdrop Telegram yang menggunakan arsitektur hybrid denga
 ## 🎮 Fitur Utama
 
 ### ⚡ Sistem Evolusi 7 Level
-- **Evol 1 (Rookie)**: 0-999 points, 5 GXR max claim, 500H pool
+- **Evol 1 (Rookie)**: 0-999 points, 500H pool
 - **Evol 2 (Charger)**: 1000-14,999 points, 1M pool  
 - **Evol 3 (Breaker)**: 15,000-29,999 points, 1,2M pool
 - **Evol 4 (Phantom)**: 30,000-49,999 points, 1,8M pool
