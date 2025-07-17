@@ -1,5 +1,5 @@
 # 🤖 GXR Grambot - Telegram Airdrop Bot
-
+![banner](assets/banner.jpg)
 
 
 A Telegram airdrop bot with a 7-level evolution system integrated with a modern web dashboard and blockchain system.
