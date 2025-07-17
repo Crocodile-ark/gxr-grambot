@@ -22,7 +22,7 @@ GXR Grambot adalah bot airdrop Telegram yang menggunakan arsitektur hybrid denga
 - **Evol 5 (Overdrive)**: 50,000-99,999 points, 2,5M pool
 - **Evol 6 (Genesis)**: 100,000-249,999 points, 3M pool
 - **Evol 7 (Final Form)**: 250,000+ points, 5M pool
-  **Total Airdrop** : 17.000.000 [20% dari total suplai]
+## Total Airdrop: 17.000.000 [20% dari total suplai]
 
 ### 🚜 Farming System
 - Claim reward setiap 6 jam (250 points per claim)
