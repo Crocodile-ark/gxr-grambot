@@ -12,9 +12,21 @@ interface WebSocketWithUserId extends WebSocket {
 export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
   const wss = new WebSocketServer({ server: httpServer, path: '/ws' });
+  const MAX_CONCURRENT_USERS = parseInt(process.env.MAX_CONCURRENT_USERS || '30000', 10);
 
   // WebSocket connection handling
   wss.on('connection', (ws: WebSocketWithUserId) => {
+    // Enforce concurrency limit
+    if (wss.clients.size > MAX_CONCURRENT_USERS) {
+      try {
+        ws.send(JSON.stringify({ 
+          type: 'capacity_full', 
+          message: 'Kami menghargai partisipasi Anda, tapi saat ini semuanya sedang penuh, harap tunggu beberapa menit lagi untuk login.' 
+        }));
+      } catch {}
+      ws.close(1008, 'Capacity full');
+      return;
+    }
     console.log('WebSocket client connected');
 
     ws.on('message', async (message) => {
@@ -58,8 +70,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
           points: 0,
           totalReferrals: 0,
           refApplied: false,
-          isAdmin: false,
+          isAdmin: process.env.ADMIN_TELEGRAM_ID === telegramId,
         });
+      } else {
+        // Ensure admin flag stays in sync with env setting
+        const shouldBeAdmin = process.env.ADMIN_TELEGRAM_ID === telegramId;
+        if (user.isAdmin !== shouldBeAdmin) {
+          user = await storage.updateUser(user.id, { isAdmin: shouldBeAdmin });
+        }
       }
 
       const userStats = await storage.getUserStats(user.id);
