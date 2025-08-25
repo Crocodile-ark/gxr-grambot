@@ -2,20 +2,30 @@
 
 import json, os, time
 from evol import get_evol_info
-from config import CLAIM_REWARD, CLAIM_INTERVAL_HOURS
+from config import CLAIM_REWARD, CLAIM_INTERVAL_HOURS, ADMIN_TELEGRAM_ID
 from pool import check_and_reduce_pool
 
 DATA_PATH = "data/users.json"
 
 def load_users():
+    if not os.path.exists("data"):
+        os.makedirs("data", exist_ok=True)
     if not os.path.exists(DATA_PATH):
         return {}
     with open(DATA_PATH, "r") as f:
         return json.load(f)
 
 def save_users(data):
+    if not os.path.exists("data"):
+        os.makedirs("data", exist_ok=True)
     with open(DATA_PATH, "w") as f:
         json.dump(data, f)
+
+def ensure_user_record(user_id: str, username: str | None = None):
+    users = load_users()
+    if user_id not in users:
+        users[user_id] = {"points": 0, "last_claim": 0, "wallet": "", "username": username or ""}
+        save_users(users)
 
 async def claim_reward(update, context):
     user_id = str(update.effective_user.id)
@@ -30,8 +40,9 @@ async def claim_reward(update, context):
         await update.message.reply_text(f"Tunggu {remaining//3600} jam {remaining%3600//60} menit lagi.")
         return
 
-    name, _, max_gxr = get_evol_info(user["points"])
-    if not check_and_reduce_pool(name, max_gxr):
+    name, _, _ = get_evol_info(user["points"])
+    # Reduce pool by actual claim reward amount
+    if not check_and_reduce_pool(name, CLAIM_REWARD):
         await update.message.reply_text("⚠️ Pool tier kamu sudah habis. Tunggu refill.")
         return
 
@@ -71,7 +82,7 @@ async def connect_wallet(update, context):
     await update.message.reply_text("✅ Wallet berhasil dihubungkan.")
 
 async def export_csv(update, context):
-    if str(update.effective_user.id) != "123456789":  # Ganti dengan Telegram ID kamu
+    if ADMIN_TELEGRAM_ID and str(update.effective_user.id) != str(ADMIN_TELEGRAM_ID):
         await update.message.reply_text("Kamu bukan admin.")
         return
 

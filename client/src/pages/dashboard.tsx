@@ -28,6 +28,13 @@ export default function Dashboard() {
       case 'auth_success':
         setIsConnected(true);
         break;
+      case 'capacity_full':
+        setNotificationData({
+          title: 'Mohon Tunggu',
+          message: message.message || 'Kami menghargai partisipasi Anda, tapi saat ini semuanya sedang penuh, harap tunggu beberapa menit lagi untuk login.',
+          type: 'info'
+        });
+        break;
       case 'user_claimed':
         if (message.userId === userStats?.user.id) {
           setNotificationData({

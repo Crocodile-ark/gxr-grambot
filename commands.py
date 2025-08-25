@@ -3,7 +3,7 @@
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, CallbackQueryHandler
-from users import claim_reward, get_user_status, connect_wallet, export_csv
+from users import claim_reward, get_user_status, connect_wallet, export_csv, ensure_user_record
 from referral import show_referral_code, apply_referral
 from tasks import show_tasks, show_completed_tasks
 from ranking import show_rank_navigation, show_leaderboard
@@ -19,6 +19,12 @@ def register_handlers(application):
     application.add_handler(CallbackQueryHandler(handle_callback))
 
 async def start(update, context):
+    # Auto-save user id and username on /start
+    try:
+        tg_user = update.effective_user
+        ensure_user_record(str(tg_user.id), getattr(tg_user, "username", None))
+    except Exception:
+        pass
     keyboard = [
         [
             InlineKeyboardButton("🚜 Farming", callback_data="farming"),

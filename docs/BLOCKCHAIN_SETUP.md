@@ -918,3 +918,5 @@ analytics = BlockchainAnalytics()
 ---
 
 **⛓️ Blockchain Integration Complete! Ready for Web3 Claims!**
+
+> Note: The web admin panel is visible only for the admin Telegram ID configured via `ADMIN_TELEGRAM_ID`. The server also enforces a `MAX_CONCURRENT_USERS` WebSocket cap; excess connections are informed to wait via popup.
